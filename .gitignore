@@ -1,0 +1,44 @@
+# Binaries
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Go build artifacts
+/bin/
+/pkg/
+/build/
+*.test
+*.a
+*.o
+
+# Go modules
+go.sum
+go.work
+go.work.sum
+
+# Dependency directory (if vendoring is used)
+vendor/
+
+# GoLand IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+/out/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+.DS_Store
+
+# Coverage reports
+coverage.out
+
+# Debugging files
+debug/

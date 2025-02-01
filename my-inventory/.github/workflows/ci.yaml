@@ -8,7 +8,7 @@ on:
 env:
   DB_NAME: test
   DB_USER: root
-  DB_PASSWORD: "your_new_password"  # Use quotes for special characters
+  DB_PASSWORD: "100%Sure"  # Use quotes for special characters
 
 jobs:
   run_code_checks:
@@ -19,8 +19,8 @@ jobs:
         run: |
           sudo /etc/init.d/mysql start
           # Correct the quoting for special characters in the password
-          sudo mysql -e 'ALTER USER "${{ env.DB_USER }}"@"localhost" IDENTIFIED BY "${{ env.DB_PASSWORD }}";' -uroot -proot
-          sudo mysql -e 'CREATE DATABASE IF NOT EXISTS ${{ env.DB_NAME }};' -u${{ env.DB_USER }} -p"${{ env.DB_PASSWORD }}"
+          sudo mysql -e "ALTER USER '${{ env.DB_USER }}'@'localhost' IDENTIFIED BY '${{ env.DB_PASSWORD }}';" -uroot -proot
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS ${{ env.DB_NAME }};" -u${{ env.DB_USER }} -p'${{ env.DB_PASSWORD }}'
           
       - name: Checkout Repo Code
         uses: actions/checkout@v2

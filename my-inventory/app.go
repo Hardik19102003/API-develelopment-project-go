@@ -34,7 +34,12 @@ func (app *App) Run(address string) {
 }
 
 func sendResponse(w http.ResponseWriter, statusCode int, payload interface{}) {
-	response, _ := json.Marshal(payload)
+	response, err := json.Marshal(payload)
+	if err != nil {
+		http.Error(w, "Failed to encode JSON", http.StatusInternalServerError)
+		return
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	w.Write(response)

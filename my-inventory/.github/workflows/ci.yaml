@@ -3,7 +3,7 @@ on: push
 env:
   DB_NAME: test
   DB_USER: root
-  DB_PASSWORD: "100%Sure"
+  DB_PASSWORD: "100/%Sure"
 jobs:
   run_code_checks:
     runs-on: ubuntu-latest

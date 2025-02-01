@@ -3,7 +3,7 @@ on: push
 env:
   DB_NAME: test
   DB_USER: root
-  DB_PASSWORD: "100/%Sure"
+  DB_PASSWORD: 100%Sure
 jobs:
   run_code_checks:
     runs-on: ubuntu-latest
@@ -12,7 +12,7 @@ jobs:
         run: |
           sudo /etc/init.d/mysql start
           sudo mysql -e 'ALTER USER "${{env.DB_USER}}"@"localhost" IDENTIFIED BY "${{env.DB_PASSWORD}}";' -uroot -proot
-          sudo mysql -e 'CREATE DATABASE ${{env.DB_NAME}};' -u${{env.DB_USER}} -p${{env.DB_PASSWORD}}
+          sudo mysql -e 'CREATE DATABASE ${{env.DB_NAME}};' -u${{env.DB_USER}} -p"${{env.DB_PASSWORD}}"
       - name: Checkout Repo Code
         uses: actions/checkout@v2
       - name: Set Up Go

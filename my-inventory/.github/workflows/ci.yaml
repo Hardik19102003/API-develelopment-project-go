@@ -8,7 +8,7 @@ on:
 env:
   DB_NAME: test
   DB_USER: root
-  DB_PASSWORD: "your_password"  # Use quotes for special characters
+  #DB_PASSWORD: "your_password"  # Use quotes for special characters
 
 jobs:
   run_code_checks:
@@ -18,8 +18,8 @@ jobs:
       - name: Set up MySQL
         run: |
           sudo /etc/init.d/mysql start
-          sudo mysql -e "ALTER USER '${{env.DB_USER}}'@'localhost' IDENTIFIED BY '${{env.DB_PASSWORD}}';" -uroot -proot
-          sudo mysql -e "CREATE DATABASE ${{env.DB_NAME}};" -u${{env.DB_USER}} -p"${{env.DB_PASSWORD}}"
+          sudo mysql -e "ALTER USER '${{env.DB_USER}}'@'localhost' IDENTIFIED BY '${{secrets.DB_PASSWORD}}';" -uroot -proot
+          sudo mysql -e "CREATE DATABASE ${{env.DB_NAME}};" -u${{env.DB_USER}} -p"${{secrets.DB_PASSWORD}}"
       
       - name: Checkout Repo Code
         uses: actions/checkout@v2

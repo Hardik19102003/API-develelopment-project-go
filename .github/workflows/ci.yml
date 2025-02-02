@@ -31,8 +31,11 @@ jobs:
 
       - name: Run Linting
         run: |
+          cd my-inventory
           go fmt ./...
           go vet ./...
 
       - name: Run tests
-        run: go test
+        run: |
+         cd my-inventory
+         go test

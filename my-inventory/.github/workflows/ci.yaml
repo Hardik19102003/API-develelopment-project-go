@@ -8,7 +8,7 @@ on:
 env:
   DB_NAME: test
   DB_USER: root
-  #DB_PASSWORD: "your_password"  # Use quotes for special characters
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
 jobs:
   run_code_checks:
